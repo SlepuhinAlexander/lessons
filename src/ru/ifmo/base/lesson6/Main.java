@@ -67,12 +67,8 @@ public class Main {
             System.out.println(books[i].getAuthor().getSurname());
         }
 
-
-
-
         Library library = new Library();
         library.addBook(book1, book2);
-
     }
 
 }
