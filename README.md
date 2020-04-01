@@ -1,3 +1,5 @@
+### [Ссылка на обратную связь по дз на время перерыва](https://docs.google.com/spreadsheets/d/15GH_OaIsZJf09O1_cefLnBjrr5SS602nOUr4ccGALjg/edit#gid=0)
+    
 Занятие 1:
 1. [Типы данных](src/lesson1/FirstLesson.java) 
 2. Операторы 
