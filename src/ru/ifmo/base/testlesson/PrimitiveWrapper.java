@@ -44,7 +44,6 @@ public class PrimitiveWrapper {
         num = (int) one; // атоупаковка  работает
 
 
-
         // на автораспаковку данное правило не распротроняется
         Byte two = 2;
         int num2 = two;
@@ -129,9 +128,6 @@ public class PrimitiveWrapper {
         System.out.println(Double.TYPE);
 
 
-
-
-
     }
 
     private static void printDoubleArr(Double[] doubles) {
@@ -146,18 +142,18 @@ public class PrimitiveWrapper {
         }
     }
 
-        private static void sgr (Integer num){
-            System.out.println(num * num);
-        }
-
-        private static void sqr (Integer input){
-            Integer squar = input * input;
-            System.out.println(squar);
-        }
-
-        private static void fnc (Integer x){
-            System.out.println(x *= x);
-        }
-
-
+    private static void sgr(Integer num) {
+        System.out.println(num * num);
     }
+
+    private static void sqr(Integer input) {
+        Integer squar = input * input;
+        System.out.println(squar);
+    }
+
+    private static void fnc(Integer x) {
+        System.out.println(x *= x);
+    }
+
+
+}
