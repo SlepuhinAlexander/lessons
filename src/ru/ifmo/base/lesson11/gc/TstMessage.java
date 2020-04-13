@@ -16,5 +16,11 @@ public class TstMessage {
 
     private static void printStart(){
         System.out.println("START");
+        // объект типа Message создается в heap памяти
+        Message message = new Message();
+        // еще один объект типа Message создается в heap памяти
+        message = new Message();
+        // обнуление ссылки (не удаление объекта)
+        message = null;
     }
 }
