@@ -57,6 +57,10 @@ public class EnumsExample {
         operation = Operation.SUM;
         System.out.println(operation.action(2, 6));
 
+        // создать enum, который перечисляет планеты солнечной системы
+        // и возвращает массу планеты и ее радиус
+        // для каждой планеты в цикле вывести ее название, массу, радиус
+
     }
 }
 
@@ -105,7 +109,7 @@ enum Operation{
         }
     };
 
-    public abstract int action(int a, int b);// общий метод
+    public abstract int action(int a, int b);  // общий метод
 }
 
 
