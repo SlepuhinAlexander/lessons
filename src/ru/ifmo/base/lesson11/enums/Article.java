@@ -6,10 +6,20 @@ public class Article {
     private String title;
     private String text;
     private LocalDateTime created;
-    
+
+    private Country country; // ссылка на enum Country
+
     public Article(String title) {
         this.title = title;
         created = LocalDateTime.now();
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     public String getTitle() {
@@ -36,4 +46,14 @@ public class Article {
         this.created = created;
     }
 
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "title='" + title + '\'' +
+                ", text='" + text + '\'' +
+                ", created=" + created +
+                ", country=" + country +
+                '}';
+    }
 }
