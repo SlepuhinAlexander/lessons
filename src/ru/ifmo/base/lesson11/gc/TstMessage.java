@@ -1,0 +1,20 @@
+package ru.ifmo.base.lesson11.gc;
+
+public class TstMessage {
+
+    public static void main(String[] args) {
+        String data = "Срочное сообщение";
+        int num = 10;
+
+        printStart();
+
+        Message message = new Message();
+        message.setText(data);
+        message.setCode(num);
+
+    }
+
+    private static void printStart(){
+        System.out.println("START");
+    }
+}
