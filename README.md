@@ -139,9 +139,10 @@
 [Обертки над примитивами](src/ru/ifmo/base/testlesson) 
 
 Занятие 11
-[Перечисления Enum](src/ru/ifmo/base/lesson11/enums)
+1. [Перечисления Enum](src/ru/ifmo/base/lesson11/enums)
+2. [Java Memory Model / Сборка мусора](src/ru/ifmo/base/lesson11/gc) 
 
-Задание на enum:
+#### Домашнее задание на enum:
 
         Дано
         1.  enum должностей Position,
@@ -155,4 +156,32 @@
         Пользователь вводит свои имя, фамилию и первую букву должности.
         Ваша задача создать объект типа User и поместить его в соответствующий массив.
         
-[Java Memory Model / Сборка мусора](src/ru/ifmo/base/lesson11/gc) 
+
+Занятие 12
+1. [Исключения](src/ru/ifmo/base/lesson12)
+
+### Домашнее задание на исключения:
+
+1. Метод *static void throwException(Status status) throws JarException, FileNotFoundException, AccessDeniedException*
+принимает на вход enum и выбрасывает следующие исключения в зависимости от значения status:
+    1. если status FILE_NOT_FOUND, выбрасывает FileNotFoundException
+    2. если status ACCESS_DENIED, выбрасывает AccessDeniedException
+    3. если status JAR_ERROR, выбрасывает JarException.
+    
+При вызове метода throwException обработать исключения следующим образом:
+*FileNotFoundException* - выводить в консоль сообщение исключения(метод getMessage()) + любое дополнительное сообщение,
+*AccessDeniedException* - выводить в консоль сообщение исключения (метод getMessage()) и снова выбрасывать exception,
+*JarException* - выводить в консоль стек трейс.
+
+enum Status с необходимыми константами нужно создать.
+
+2. Создать список исключений и заполнить его 9 различными runtime исключениями.
+Например,
+
+         try {
+             int[] arr = new int[5];
+             arr[7] = 12;
+         } catch (Exception e) {
+             exceptionsList.add(e);
+         }
+
