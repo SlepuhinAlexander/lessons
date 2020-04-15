@@ -2,6 +2,8 @@ package ru.ifmo.base.lesson12;
 
 import ru.ifmo.base.lesson11.gc.Message;
 
+import java.io.IOException;
+
 public class ExceptionLesson {
     public static void main(String[] args) {
         // исключения и ошибки - это объекты
@@ -116,17 +118,72 @@ public class ExceptionLesson {
             System.out.println(e.getMessage());
         }
 
+        // блок finally (не обязательный блок)
+        finally {
+            // код, который написан в блоке finally выполнится в случае любого
+            // исключения, даже если оно не перехватывается в блоке catch
+            // или если исключение не произошло
+            // используется для закрытия ресурсов
+            // не должен содержать необработанных исключений
+            System.out.println("finally");
+        }
 
+        // в языке есть возможность не только обрабатывать,
+        // но и генерировать исключения
+        // метод выбрасывает RuntimeException, поэтму мы можем обработать его,
+        // поместив вызом метода в блок try, а можем не обрабатывать. Тогда
+        // в случае исключения программа прекратит выполнение
+        voidWithUncheckedException(40);
+        voidWithUncheckedException(100);
 
+        try {
+            // метод генерирует обрабатываемое исключение, поэтому мы обязаны
+            // обработать его в блоке try - catch или пробросить на уревень выше
+            voidWithCheckedException("asd.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-
-
-
-
-
-
+        SomeMessage someMessage = null;
+        String title = ""; // данные приходят от пользователя
+        String text = "Текст"; // данные приходят от пользователя
+        try {
+            someMessage = new SomeMessage(title, text);
+        } catch (ChatException e) {
+            // допустим наши действи в блоке try привели к выбросу исключения
+            try {
+                // допустим при возникновении исключения в блоке try нам нужно
+                // выбросить еще одно исключение
+                throw new ChatException("some data").initCause(e);
+            } catch (Throwable ex) {
+                System.out.println("Throwable " + ex.getCause());
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        }
+        // если объект не создан, следующий код приведет
+        // к NullPointerException (значит необходимо вернуться к проверке
+        // входящих данных)
+        System.out.println(someMessage.getText());
 
 
     }
+
+    private static void voidWithCheckedException(String s) throws IOException{
+        if (s.endsWith("txt")) {
+            // генерируем и выбрасываем обрабатываемое исключение
+            throw new IOException("Проблема с файлом");
+        }
+        System.out.println("s = " + s);
+    }
+
+    private static void voidWithUncheckedException(int a){
+        if (a < 15) {
+            // генерируем и выбрасываем runtime исключение
+            throw new IllegalArgumentException("Значение не должно быть меньше 15");
+        }
+        System.out.println("a = " + a);
+    }
+
 }
 
