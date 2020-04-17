@@ -36,7 +36,8 @@ public class GenericExample {
 
         User<Number> numberUser = new User<>();
         numberUser.setId(44);
-
+        // для объекта container4 тип данных key - Double
+        // для объекта container4 тип данных value - User с типом поля id - Number и только Number!!!
         PairContainer<String, User<Number>> container4 = new PairContainer<>("hello", numberUser);
 
 

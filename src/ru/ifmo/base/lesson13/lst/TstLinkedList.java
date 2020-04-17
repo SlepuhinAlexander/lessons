@@ -6,7 +6,7 @@ public class TstLinkedList {
         list.add(23);
         list.add(12);
 
-        System.out.println(list.get(1));
+        System.out.println(list.get(1)); // получение по индексу
 
     }
 }
