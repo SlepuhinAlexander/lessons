@@ -155,7 +155,7 @@ public class CollectionExample {
         System.out.println("treeSet1 " + treeSet1);
 
         // пердать в конструктор TreeSet компаратор - объект класса Comparator
-        // сначала сортировка по имени, если имена одинаковые - по возрасту
+        // сначала сравнивает по имени, если имена одинаковые - по возрасту
         Comparator<Student> studentComparator = new StudentNameComparator()
                 .thenComparing(new StudentAgeComparator());
 
@@ -163,7 +163,31 @@ public class CollectionExample {
         treeSet2.add(student1);
         treeSet2.add(student2);
         treeSet2.add(student3);
+        treeSet2.add(student4);
         System.out.println("treeSet2 " + treeSet2);
+
+
+        LinkedList<Student> students = new LinkedList<>();
+        students.add(student1); // добавление элемента в конец списка
+        students.add(student2); // добавление элемента в конец списка
+        students.add(student3);
+        // перебор коллекций через foreach
+        for (Student student:students) {
+            System.out.println(student);
+            System.out.println(student.getName());
+//            if (student.getName().equals("Петр")) {
+//                // ConcurrentModificationException
+//                students.remove(student);
+//            }
+        }
+
+        Iterator<Student> studentIterator = students.listIterator();
+        while (studentIterator.hasNext()) {
+            if (studentIterator.next().getName().equals("Петр")) {
+                studentIterator.remove();
+            }
+        }
+        System.out.println("students " + students);
 
 
 
