@@ -1,4 +1,4 @@
-package ru.ifmo.base.lesson14.comparing;
+package ru.ifmo.base.lesson14.hw.car;
 
 public class Car {
     private String color;
