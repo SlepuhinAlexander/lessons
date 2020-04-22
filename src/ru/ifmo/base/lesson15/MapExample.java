@@ -1,8 +1,7 @@
 package ru.ifmo.base.lesson15;
 
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class MapExample {
     public static void main(String[] args) {
@@ -65,6 +64,46 @@ public class MapExample {
         for (Map.Entry<String, User> entry: userHashMap.entrySet()){
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }
+
+
+        System.out.println("---EnumMap---");
+        // 1. использует enum в качестве ключей, все ключи должны быть одного типа
+        // (все они должны быть элементами одного enum)
+        // 2. null нельзя использовать в качесве ключа
+        // 3. значения (values) хранятся в массиве (размер массива - количество
+        // элементов enum)
+        // 4. порядок хранения элементов соответствуе порядку элементов в enum
+        // 5. для извлечения значений (values) из массива используется
+        // порядковый номер ключа - метод ordinal() (vals[key.ordinal()])
+
+        // создание объекта EnumMap, в конструкторе необходимо передать сслыку!!!
+        // на enum, который будет использован в качестве ключей
+        EnumMap<Role, ArrayList<User>> enumMap = new EnumMap<>(Role.class);
+
+
+
+
+
+
+
+
+        /*clear
+        containsKey
+        containsValue
+        entrySet
+        get
+        getOrDefault
+        isEmpty
+        keySet
+        put
+        putAll
+        putIfAbsent
+        remove(2)
+        replace(2)
+        size
+        values*/
+        // + конструкторы HashMap, EnumMap, TreeMap
+
 
 
 
