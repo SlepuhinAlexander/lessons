@@ -185,3 +185,18 @@ enum Status с необходимыми константами нужно соз
              exceptionsList.add(e);
          }
 
+
+Занятие 13
+1. [Generic](src/ru/ifmo/base/lesson13)
+
+Занятие 14
+1. [Коллекции](src/ru/ifmo/base/lesson14)
+
+### Домашнее задание на коллекции:
+[Задачи в пакете lesson14/hw](src/ru/ifmo/base/lesson14/hw)
+
+Занятие 15
+1. [Map](src/ru/ifmo/base/lesson15)
+
+### Домашнее задание на map:
+[Задачи в пакете lesson15/task](src/ru/ifmo/base/lesson15/task)

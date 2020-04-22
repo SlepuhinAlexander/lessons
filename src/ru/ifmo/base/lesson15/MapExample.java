@@ -2,6 +2,7 @@ package ru.ifmo.base.lesson15;
 
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class MapExample {
     public static void main(String[] args) {
@@ -59,6 +60,13 @@ public class MapExample {
         // соответствует указанное значение (asd), произойдет заменна на новое
         // значение (null вместо asd)
         userHashMap.replace(null, asd, null);
+
+        System.out.println("---Перебор элементов map---");
+        for (Map.Entry<String, User> entry: userHashMap.entrySet()){
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+
+
 
 
 
