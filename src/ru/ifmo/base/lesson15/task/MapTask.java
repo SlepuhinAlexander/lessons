@@ -3,10 +3,22 @@ package ru.ifmo.base.lesson15.task;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MapTask {
+    private static List<String> getPeopleByCity(HashMap<String, String> map, String city) {
+        List<String> logins = new ArrayList<>();
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            if (entry.getValue().equals(city)) {
+                logins.add(entry.getKey());
+            }
+        }
+        return logins;
+    }
+
     public static void main(String[] args) {
-        // TODO:: написать статический метод, который приннимает на вход мапу (firstTaskMap) и город (city)
+        // TODO:: написать статический метод, который приннимает на вход
+        //  мапу (firstTaskMap) и город (city)
         //  и формирует список (List) логинов, которые соответствуют переданному городу
 
         HashMap<String, String> firstTaskMap = new HashMap<>();
@@ -18,7 +30,7 @@ public class MapTask {
 
         String city = "Тверь";
 
-
+        System.out.println(getPeopleByCity(firstTaskMap, city));
 
 
         // TODO:: дан список слов (words). Написать метод, который будет возвращать количество одинаковых слов с списке
@@ -36,8 +48,6 @@ public class MapTask {
         words.add("august");
 
 
-
-
         // TODO:: дана мапа (customerMap).
         //  Написать метод, который принимает на вход агрументы int from и int to и возвращает новую мапу,
         //  в которую войдут все покупатели, возраст которых находится в диапазоне [from, to)
@@ -47,8 +57,6 @@ public class MapTask {
         customerMap.put("2", new Customer("Олег", "2", 17));
         customerMap.put("3", new Customer("Максим", "3", 48));
         customerMap.put("4", new Customer("Евгения", "4", 67));
-
-
 
 
         // TODO:: Задания по тексту (text). На каждый пункт - минимум один метод:
@@ -66,6 +74,6 @@ public class MapTask {
                 " sometimes on purpose injected humour and the like"; // !!! в тексте содержатся только буквы и пробельные символы !!!
 
 
-
     }
+
 }

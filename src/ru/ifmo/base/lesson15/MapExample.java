@@ -1,6 +1,8 @@
 package ru.ifmo.base.lesson15;
 
 
+import java.lang.ref.WeakReference;
+import java.sql.Array;
 import java.util.*;
 
 public class MapExample {
@@ -61,7 +63,7 @@ public class MapExample {
         userHashMap.replace(null, asd, null);
 
         System.out.println("---Перебор элементов map---");
-        for (Map.Entry<String, User> entry: userHashMap.entrySet()){
+        for (Map.Entry<String, User> entry : userHashMap.entrySet()) {
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }
 
@@ -78,14 +80,84 @@ public class MapExample {
 
         // создание объекта EnumMap, в конструкторе необходимо передать сслыку!!!
         // на enum, который будет использован в качестве ключей
+        // Role.class - ссылка на enum Role
         EnumMap<Role, ArrayList<User>> enumMap = new EnumMap<>(Role.class);
+        enumMap.put(Role.USER, new ArrayList<>(Arrays.asList(cbf, rty)));
+        // запись на 83 строке аналогична записям на 85-87 строках:
+        // List<User> userList = Arrays.asList(cbf, rty);
+        // ArrayList<User> userArrayList = new ArrayList<>(userList);
+        // enumMap.put(Role.USER, userArrayList);
+
+        enumMap.put(Role.ADMIN, new ArrayList<>(Arrays.asList(asd, bnm)));
+
+        System.out.println(enumMap);
+        System.out.println(enumMap.get(Role.USER));
+
+        // вывести в консоль логины! всех пользователей с ролью ADMIN
+        ArrayList<User> users = enumMap.get(Role.ADMIN);
+        for (User user : users) {
+            System.out.println(user.getLogin());
+        }
+        User newUser = new User("newUser", "676", Role.ADMIN);
+        // добавить объект в enumMap в зависимости от роли
+        enumMap.get(newUser.getRole()).add(newUser);
+        //newUser.getRole() - получили роль пользователя
+        //enumMap.get(newUser.getRole()) - по ключу (роль) получили
+            //связанное с ним значение -ArrayList<User>
+        //enumMap.get(newUser.getRole()).add(newUser); - в полученный
+            //ArrayList добавили объект newUser
+
+        System.out.println("---TreeMap---");
+        // 1. хранит элементы в отсортированном по ключам порядке
+        // 2. null не может быть использован в качестве ключа
+        // 3. класс, объекты которого используются в качестве ключей!!!
+        // должен имплементировать интерфейс Comparable
+        // либо объект Comparator должен передаваться в констрктор TreeMap
+        // 4. основан на алгоритме красно-черного дерева
+
+        userHashMap.remove(null);
+
+        TreeMap<String, User> treeMap = new TreeMap<>(userHashMap);
+        System.out.println(treeMap);
+        treeMap.put(asd.getLogin(), asd);
+        treeMap.put(rty.getLogin(), rty);
+        treeMap.put(bnm.getLogin(), bnm);
+        System.out.println(treeMap);
 
 
+        System.out.println("---WeakHashMap---");
+        // 1. хранит ключи в hash-таблице
+        // 2. для объектов,которые используются в качестве ключей должны быть
+        // переопределены методы equals и hashCode
+        // 3. порядок хранения элементов может отличаться от порядка добавления
+        // 4. null может быть использован в качестве ключа
+        // 5. запись из WeakHashMap будет удалена при сборке мусора,
+        // если на ключи не осталось сильных ссылок
 
+        WeakHashMap<Object, String> weakHashMap = new WeakHashMap<>();
+        Object weakKey = new Object();
+        String weakVal = "String value";
+        weakHashMap.put(weakKey, weakVal);
 
+        HashMap<Object, String> hashMap = new HashMap<>();
+        Object hashKey = new Object();
+        String hashVal = "String value";
+        hashMap.put(hashKey, hashVal);
 
+        // обнуляем ссылки на ключи
+        weakKey = null;
+        hashKey = null;
 
+        System.gc(); // попытка запустить сборку мусора
 
+        System.out.println("weakHashMap " + weakHashMap);
+        System.out.println("hashMap " + hashMap);
+
+        // user - сильная ссылка - strong reference
+        User user = new User("user", "34343", Role.ADMIN);
+        // weakUser - слабая ссылка - weak reference
+        WeakReference<User> weakUser = new WeakReference<>(user);
+        user = null;
 
         /*clear
         containsKey
@@ -103,16 +175,6 @@ public class MapExample {
         size
         values*/
         // + конструкторы HashMap, EnumMap, TreeMap
-
-
-
-
-
-
-
-
-
-
 
 
     }
