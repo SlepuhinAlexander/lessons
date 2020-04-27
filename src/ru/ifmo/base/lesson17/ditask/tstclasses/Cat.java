@@ -6,31 +6,27 @@ import ru.ifmo.base.lesson17.ditask.tstclasses.config.AnimalsConfig;
 
 import java.util.ArrayList;
 
+
 @RequiredClass
 public class Cat {
     @Required
     private AnimalsConfig catConfig;
-    private String name;
-    private int speed;
 
     @Required
     private Owner owner;
 
     private ArrayList<Mouse> mice = new ArrayList<>(20);
 
-    public Cat() {
-        name = catConfig.getCatName();
-        speed = catConfig.getCatSpeed();
-    }
-
     public void catchMouse(Mouse mouse) {
-        if (speed < mouse.getSpeed()) {
-            System.out.println(mouse.getName() + " убежал от " + name);
+        if (catConfig.getCatSpeed() < mouse.getSpeed()) {
+            System.out.println(mouse.getName() + " убежал от " + catConfig.getCatName());
             return;
         }
         mice.add(mouse);
-        System.out.println(name + " поймал " + mouse.getName());
+        System.out.println(catConfig.getCatName() + " поймал " + mouse.getName());
 
     }
+
+
 
 }

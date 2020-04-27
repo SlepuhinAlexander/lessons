@@ -1,5 +1,7 @@
 package ru.ifmo.base.lesson17.properties;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertiesLoader {
@@ -27,5 +29,12 @@ public class PropertiesLoader {
 
     private void loadProperties(){
         // загрузка данных из properties файла
+        try (InputStream input = PropertiesLoader.class
+                .getClassLoader()
+                .getResourceAsStream(propFileName)){
+            properties.load(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -9,9 +9,8 @@ import ru.ifmo.base.lesson17.ditask.tstclasses.config.AnimalsConfig;
 public class Owner {
     @Required
     private AnimalsConfig ownerConfig;
-    private String name;
 
-    public Owner() {
-        name = ownerConfig.getOwnerName();
+    public String getName(){
+        return ownerConfig.getOwnerName();
     }
 }
