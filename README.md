@@ -200,3 +200,29 @@ enum Status с необходимыми константами нужно соз
 
 ### Домашнее задание на map:
 [Задачи в пакете lesson15/task](src/ru/ifmo/base/lesson15/task)
+
+Занятие 16
+1. [Рефлексия и аннотации](src/ru/ifmo/base/lesson16)
+
+### Домашнее задание на рефлексию и аннотации:
+[Задачи в пакете lesson17/ditask](src/ru/ifmo/base/lesson17/ditask)
+
+Занятие 18
+1. [IO API часть 1](src/ru/ifmo/base/lesson18)
+
+### Домашнее задание на IO API:
+[Задачи в пакете lesson17/ditask](src/ru/ifmo/base/lesson17/ditask)
+
+     1. Разбить файл (информацию из одного файла записать в 2 разных файла)
+        Склеить файл (информацию из нескольких файлов записать в один файл)
+     
+     2. Написать свои реализации InputStream и OutputStream, 
+        которые будут расширять FilterinputStream и FilterOutputStream.
+        В переопределяемых методах (read и write) необходимо дешифровать и шифровать данные (использовать xor).
+        Данные реализации обертки над основным функционалом, например, если речь идет о записи в файл,
+        то Ваш метод write шифрует данные и потом вызывает метод write fileoutputStream,
+        метод read вызывает метод read fileinputStream и потом дешифрует полученниые данные.
+        Объекты fileoutputStream и fileinputStream будут передаваться в конструкторы 
+        Ваших реализаций InputStream и OutputStream.
+        
+     
