@@ -6,8 +6,11 @@ public class Pupil extends Human implements LearnAble {
     private Group group;
     private int level;
     private LocalDate lastLesson;
+    // transient свойства не будут учасвовать в сериализации /
+    // деснриализации. Работает вместе с интерфейсом Serializable
+    transient private String info = "Ученик";
 
-    private final String info = "Ученик";
+    private static final long serialVersionUID = 1L;
 
     public Group getGroup() {
         return group;
