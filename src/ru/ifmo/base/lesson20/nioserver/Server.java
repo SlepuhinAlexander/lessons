@@ -11,8 +11,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.Set;
 // селекторы позволяют одному потоку обслуживать несколько каналов.
-// селектор подписывается на событие (или несколько событий) в канале (Connect / Accept / Read / Write).
-// когда в канале наступит то или иное событие, селектор будет проинформирован об этом
+// селектор подписывается на событие (или несколько событий)
+// в канале (Connect / Accept / Read / Write).
+// когда в канале наступит то или иное событие,
+// селектор будет проинформирован об этом
 // и сможет отреагировать необходимым образом
 // Например, можно на каждое соединение с сервером можно создать отдельный канал
 public class Server {
@@ -47,7 +49,8 @@ public class Server {
             serverChannel.bind(new InetSocketAddress(8090));
             // перевод в неблокирующий режим
             serverChannel.configureBlocking(false);
-            // регистрируем канал в селекторе на все допустимые события (для serverSocket - OP_ACCEPT)
+            // регистрируем канал в селекторе на все допустимые события
+            // (для serverSocket - OP_ACCEPT)
             serverChannel.register(selector, serverChannel.validOps());
         }
 
@@ -116,6 +119,7 @@ public class Server {
 
                 // готовим буфер для записи
                 byteBuffer.flip();
+
 
                 Set<SelectionKey> keys = selector.keys();
                 for (SelectionKey key: keys){
