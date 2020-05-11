@@ -1,6 +1,17 @@
 package ru.ifmo.base.lesson21;
 
 public class Lambda {
+    private Operation plus = (n, m) -> n + m;
+    private static Operation staticPlus = (n, m) -> n + m;
+
+    public Operation getPlus() {
+        return plus;
+    }
+
+    public void setPlus(Operation plus) {
+        this.plus = plus;
+    }
+
     public static void main(String[] args) {
         // лямбда - реализация метода интерфейса
         // при этом в интерфейсе должен быть только один
@@ -31,10 +42,16 @@ public class Lambda {
         };
         System.out.println(plus.execute(34, 134));
 
+        System.out.println(Calculator.calculate(3, 67, plus));
+        System.out.println(Calculator.calculate(100, 50, division));
+
+        // лямбда без созранения в переменную
+        System.out.println(Calculator.calculate(10, 10, (a, b) -> a - b));
+
     }
 }
 
-// функциональный - интерфейс с одним абстранктным методом
+// функциональный - интерфейс с одним абстранктным методом!
 // и любым количеством default методов
 @FunctionalInterface
 interface Operation {
@@ -43,7 +60,7 @@ interface Operation {
 
 
 class Calculator {
-    public static double calculate(double a, double b, Operation operation){
+    public static double calculate(double a, double b, Operation operation) {
         return operation.execute(a, b);
     }
 }
