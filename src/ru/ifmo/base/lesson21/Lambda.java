@@ -29,8 +29,7 @@ public class Lambda {
             if (b == 0) throw new IllegalArgumentException("0!!!");
             return a / b;
         };
-
-
+        System.out.println(plus.execute(34, 134));
 
     }
 }
@@ -40,4 +39,11 @@ public class Lambda {
 @FunctionalInterface
 interface Operation {
     double execute(double a, double b);
+}
+
+
+class Calculator {
+    public static double calculate(double a, double b, Operation operation){
+        return operation.execute(a, b);
+    }
 }
