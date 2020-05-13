@@ -11,5 +11,6 @@ public class CollectorsExample {
         employees.add(new Employee("vbn", "Google", 3000, 22));
         employees.add(new Employee("tyu", "Apple", 1500, 22));
 
+
     }
 }
