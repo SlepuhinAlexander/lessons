@@ -16,7 +16,7 @@ public class TopTenWords {
         // в мапу должны войти только первые 10 частоте встречаемости слов
 
         // текст в файле
-        File file = new File("sources/task21.txt");
+        File file = new File("sources/task21.txt"); // содержимое файла может быть любым
         Map<String, Long> map;  // = читаем из файла в stream
                 // сделать stream параллельным
                 // обработать каждый элемент: убрать пробелы, привести к нижнему регистру
