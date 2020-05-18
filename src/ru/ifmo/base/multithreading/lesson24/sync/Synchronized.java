@@ -16,6 +16,15 @@ public class Synchronized {
             thread.start();
         }
 
+        for (IncrementThread thread: threads){
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println("counter: " + counter.getCounter());
 
 
     }
