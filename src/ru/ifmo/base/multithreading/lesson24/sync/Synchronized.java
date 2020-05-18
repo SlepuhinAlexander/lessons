@@ -26,6 +26,12 @@ public class Synchronized {
 
         System.out.println("counter: " + counter.getCounter());
 
+        // counter: counter=2
+
+        // [t1 counter=1] [t2 counter=1] [t3 counter=1]
+        // [t1 counter=2] [t2 counter=2] [t3 counter=2]
+
+
 
     }
 }
@@ -37,13 +43,14 @@ class Counter {
         return counter;
     }
 
-    public void increment(){
+//    public void increment(){
+    public synchronized void increment(){
         counter++;
     }
 }
 
 class IncrementThread extends Thread{
-    private Counter counter;
+    private final Counter counter;
 
     public IncrementThread(Counter counter){
         this.counter = counter;
@@ -52,7 +59,11 @@ class IncrementThread extends Thread{
     @Override
     public void run(){
         for (int i = 0; i < 1000; i++) {
-            counter.increment();
+//            synchronized (counter){
+                counter.increment();
+                // поток отпустит объект после завершения
+                // всех инструкций в synchronized блоке
+//            }
         }
     }
 }
