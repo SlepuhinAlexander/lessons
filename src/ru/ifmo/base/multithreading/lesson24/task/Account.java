@@ -2,7 +2,7 @@ package ru.ifmo.base.multithreading.lesson24.task;
 
 public class Account {
 
-    private int id; // unique
+    private int id; // unique (1,2,3,4,5...)
     private int balance; // доступные средства на аккаунте
 
 
@@ -16,27 +16,16 @@ public class Account {
     }
 
 
-
     public void setId(int id) {
-
         this.id = id;
-
     }
-
-
 
     public int getBalance() {
-
         return balance;
-
     }
 
-
-
     public void setBalance(int balance) {
-
         this.balance = balance;
-
     }
 
 }
