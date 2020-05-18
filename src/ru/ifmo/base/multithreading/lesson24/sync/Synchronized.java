@@ -12,11 +12,11 @@ public class Synchronized {
             threads.add(new IncrementThread(counter));
         }
 
-        for (IncrementThread thread: threads){
+        for (IncrementThread thread : threads) {
             thread.start();
         }
 
-        for (IncrementThread thread: threads){
+        for (IncrementThread thread : threads) {
             try {
                 thread.join();
             } catch (InterruptedException e) {
@@ -34,20 +34,29 @@ class Counter {
         return counter;
     }
 
-    public void increment(){
+//    public void increment() {
+    public synchronized void increment() {
         counter++;
     }
 }
 
 class IncrementThread extends Thread {
     private Counter counter;
-    public IncrementThread(Counter counter){
+
+    public IncrementThread(Counter counter) {
         this.counter = counter;
     }
+
     @Override
-    public void run(){
+    public void run() {
+
         for (int i = 0; i < 1000; i++) {
-            counter.increment();
+            // synchronized блок на объекте counter
+//            synchronized (counter) {
+                counter.increment();
+//            }
         }
     }
 }
+//counter: counter=4;
+//[t1 counter=4] [t2 counter=4] [t3 counter=4]
