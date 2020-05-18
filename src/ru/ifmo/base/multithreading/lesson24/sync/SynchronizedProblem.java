@@ -11,14 +11,14 @@ public class SynchronizedProblem {
 
         Thread thread1 = new Thread(()->{
             System.out.println(Thread.currentThread().getName() + " запущен...");
-            synchronized (object2) {
+            synchronized (object1) {
                 try {
                     Thread.sleep(600);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 System.out.println(Thread.currentThread().getName() + " работает с object1");
-                synchronized (object1) {
+                synchronized (object2) {
                     System.out.println(Thread.currentThread().getName() + " работает с object2");
                 }
             }
