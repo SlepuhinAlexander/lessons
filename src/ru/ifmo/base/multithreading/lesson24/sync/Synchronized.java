@@ -12,6 +12,12 @@ public class Synchronized {
             threads.add(new IncrementThread(counter));
         }
 
+        for (IncrementThread thread: threads){
+            thread.start();
+        }
+
+
+
     }
 }
 
